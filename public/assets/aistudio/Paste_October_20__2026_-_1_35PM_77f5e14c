@@ -1,0 +1,2626 @@
+# SOCIAL DOMINUS — FINAL MASTER PRODUCT BUILD PROMPT
+## Premium Social Media Management, AI Publishing, Analytics, Team Collaboration, and Subscription SaaS
+
+**Project name:** Social Dominus  
+**Product category:** Commercial Social Media Management SaaS  
+**Primary purpose:** Build a complete, polished, responsive, subscription-based alternative in the social media management category.  
+**Immediate deliverable:** An implemented frontend application with functional user journeys, reusable components, mock/demo services, and documented backend integration boundaries.  
+**Planned backend:** PocketBase, supplemented by secure server-side services when required.  
+**Interface language:** English.  
+**Target customers:** Creators, freelancers, small businesses, marketing professionals, agencies, multi-brand organizations, and enterprise teams.
+
+---
+
+# SECTION 1 — YOUR MISSION
+
+Act as a senior SaaS product architect, principal frontend engineer, premium UI/UX designer, design-system engineer, subscription-billing specialist, accessibility specialist, and quality-assurance engineer.
+
+Build Social Dominus as a real, coherent, commercially designed software product.
+
+It must contain three clearly separated experiences:
+
+1. **Public Marketing Website:** Attract visitors, explain the product, display pricing, and guide customers through registration and subscription selection.
+2. **Customer Application:** Allow customers to organize social accounts, create content, schedule posts, manage teams, review performance, and administer their subscription.
+3. **Social Dominus Owner Control Center:** Allow the authorized product owner to manage customers, plans, pricing, subscriptions, trials, payments, coupons, quotas, provider configurations, and business operations.
+
+The result must look and behave like a premium SaaS platform rather than a generic dashboard template or a disconnected set of screens.
+
+Study the established product patterns of Buffer, Hootsuite, SocialPilot, Sprout Social, and SocialBee as functional inspiration. Learn from their navigation clarity, scheduling workflows, AI assistance, content categorization, approval processes, analytics, reporting, collaboration, and customer experience.
+
+Do not copy their proprietary designs, trademarks, page layouts, marketing copy, or branding. Create an original Social Dominus product identity.
+
+## The most important instruction
+
+**Build the complete application, not merely a homepage or visual prototype.**
+
+Implement the actual project files, page routes, reusable UI components, functional controls, coherent data flow, responsive layouts, demo workflows, and quality checks.
+
+Do not stop after creating the landing page, dashboard, or initial preview.
+
+Do not leave the rest of the product as blank pages, placeholder cards, or navigation links that do nothing.
+
+Do not claim that an integration is real when it has only been simulated.
+
+Make consistent product decisions based on this specification instead of repeatedly changing the application's architecture or visual direction.
+
+---
+
+# SECTION 2 — FIRST INSPECT THE PROJECT
+
+Before coding:
+
+1. Inspect the existing project files.
+2. Identify its framework, dependencies, entry points, routing, styling system, and current build configuration.
+3. Preserve working functionality and useful code.
+4. Establish a clear route map and reusable design system.
+5. Identify existing backend connections and distinguish real services from demo services.
+6. Record important assumptions and technical decisions in project documentation.
+7. Implement the complete application within the current environment.
+
+If an existing project already uses a suitable framework, keep it unless a genuine technical limitation requires a change.
+
+Do not replace working configuration unnecessarily.
+
+Use the current stable, compatible versions of libraries available in the development environment. Verify compatibility before upgrading dependencies. Do not blindly upgrade the project simply to claim that it uses the latest technology.
+
+If a required dependency is unavailable or incompatible, use the best supported alternative and document the decision.
+
+---
+
+# SECTION 3 — TECHNOLOGY AND CODE ARCHITECTURE
+
+Use an appropriate modern frontend stack.
+
+Preferred technologies for a new or compatible existing project:
+
+- React with TypeScript.
+- Vite or the existing supported build system.
+- Tailwind CSS, using the supported version compatible with the project.
+- shadcn/ui or equivalent accessible UI primitives.
+- CSS custom properties and semantic design tokens.
+- React Router or an appropriate route-management solution.
+- TanStack Query when useful for asynchronous backend data, caching, and mutation state.
+- React Hook Form and Zod for form validation.
+- Recharts for analytics.
+- Lucide React for general UI icons.
+- Official social-platform brand icons from verified brand assets or an appropriate package such as Simple Icons.
+- date-fns or an equivalent date utility.
+- Vitest and React Testing Library where suitable.
+- Playwright for end-to-end and responsive-browser testing when the environment supports it.
+
+Do not use every package simply because it is listed. Choose the smallest coherent stack that meets the product requirements.
+
+### Required architecture principles
+
+- Reusable, typed components.
+- Clear separation between presentation, business logic, data access, and configuration.
+- Consistent API and service boundaries.
+- No single enormous component containing the entire application.
+- No duplicated versions of the same pricing, plan limits, or post status definitions.
+- No unnecessary dependencies.
+- Predictable error handling.
+- Clear loading, success, empty, and failure states.
+- Maintainable code that another developer can extend.
+- A replaceable mock service layer for backend development.
+- A single source of truth for shared product configuration.
+
+Create or adapt a maintainable structure similar to:
+
+- `src/app/`
+- `src/components/`
+- `src/components/ui/`
+- `src/components/layout/`
+- `src/features/`
+- `src/features/auth/`
+- `src/features/dashboard/`
+- `src/features/planner/`
+- `src/features/publishing/`
+- `src/features/ai/`
+- `src/features/analytics/`
+- `src/features/channels/`
+- `src/features/inbox/`
+- `src/features/team/`
+- `src/features/billing/`
+- `src/features/admin/`
+- `src/services/`
+- `src/services/mock/`
+- `src/services/pocketbase/`
+- `src/types/`
+- `src/hooks/`
+- `src/config/`
+- `src/lib/`
+
+Adapt this layout sensibly to the existing project.
+
+---
+
+# SECTION 4 — PREMIUM SOCIAL DOMINUS DESIGN SYSTEM
+
+Create a unique, internationally credible visual identity.
+
+The product must feel polished, calm, intelligent, high-quality, and easy to use.
+
+Its appearance should combine the clarity of a modern productivity application with the depth of a professional marketing operations tool.
+
+## Brand identity
+
+Product name: Social Dominus.
+
+Create an original geometric SD brand mark and an attractive Social Dominus wordmark.
+
+The branding must work in:
+
+- Website header.
+- Sidebar.
+- Mobile navigation.
+- Login and signup screens.
+- Favicon.
+- Loading screen.
+- Workspace selector.
+- Reports.
+- Browser tab.
+- Public pricing page.
+
+Do not imitate the logo or distinctive branded artwork of competitors.
+
+## Primary brand palette
+
+Use a consistent set of design tokens rather than hardcoding colors into individual components.
+
+Suggested core brand colors:
+
+- Primary violet: `#7C5CFF`
+- Secondary blue: `#38BDF8`
+- Dark background: `#0B1020`
+- Dark secondary surface: `#11182B`
+- Dark elevated surface: `#151E33`
+- Primary text on dark: `#F8FAFC`
+- Secondary text on dark: `#94A3B8`
+- Success: `#22C55E`
+- Warning: `#F59E0B`
+- Error: `#F87171`
+
+Use the violet and blue accents sparingly. Do not make every card, button, border, or heading glow.
+
+Provide coherent light-theme colors for backgrounds, elevated surfaces, borders, text, input fields, menus, and charts.
+
+All components must use semantic design tokens such as:
+
+- `background`
+- `foreground`
+- `card`
+- `card-foreground`
+- `popover`
+- `muted`
+- `muted-foreground`
+- `primary`
+- `primary-foreground`
+- `secondary`
+- `accent`
+- `border`
+- `input`
+- `ring`
+- `success`
+- `warning`
+- `destructive`
+- `sidebar`
+- `chart-1` through `chart-5`
+
+Use consistent naming and token conventions across the entire application.
+
+### One shared design system
+
+The public website, authentication screens, customer dashboard, billing pages, and owner control center must look like parts of the same product.
+
+They may have different layouts, but typography, spacing, buttons, form fields, status indicators, icon sizing, corner radii, shadows, interaction states, and color behavior must be consistent.
+
+Do not implement unrelated styling systems for different pages.
+
+## Typography
+
+Use Inter, Manrope, or another highly readable contemporary web font.
+
+Use a predictable type scale for:
+
+- Display headings.
+- Page titles.
+- Section headings.
+- Card headings.
+- Body text.
+- Labels.
+- Descriptions.
+- Helper text.
+- Table values.
+- Metadata.
+
+Use fluid typography when appropriate so text remains balanced across screens.
+
+Avoid enormous headings in application dashboards. Give meaningful priority to important information without wasting screen space.
+
+## Spacing and components
+
+Use a consistent spacing scale based on small, reusable increments.
+
+Standardize:
+
+- Button heights.
+- Input heights.
+- Form spacing.
+- Card padding.
+- Modal padding.
+- Table density.
+- Navigation spacing.
+- Grid gaps.
+- Page gutters.
+- Chart headers.
+- Status badges.
+- Dropdown sizes.
+
+Buttons, inputs, dropdowns, table rows, charts, alerts, and dialogs must behave consistently throughout the application.
+
+## Visual quality
+
+Use:
+
+- Refined typography.
+- Carefully balanced negative space.
+- Subtle borders.
+- Consistent surfaces.
+- Clear visual hierarchy.
+- Carefully aligned cards.
+- Realistic, coherent demo content.
+- Small, purposeful transitions.
+- Well-designed empty states.
+- Clear and useful tooltips.
+
+Avoid:
+
+- Excessive glassmorphism.
+- Too many gradients.
+- Neon borders on every card.
+- Unnecessary animation.
+- Random icon styles.
+- Misaligned card heights.
+- Excessive chart decoration.
+- Inconsistent page gutters.
+- Oversized dashboards with little useful information.
+- Low-contrast text.
+- Layouts resembling unrelated templates.
+
+The application must look excellent without requiring users to learn where everything is.
+
+---
+
+# SECTION 5 — FULL LIGHT MODE, DARK MODE, AND SYSTEM THEME
+
+A complete and consistent theme implementation is mandatory.
+
+Provide three options:
+
+1. Light.
+2. Dark.
+3. System preference.
+
+The theme selector must be easy to find in the global application interface and settings.
+
+### Theme behavior
+
+- Apply the same theme system across all application routes.
+- Update the entire interface immediately when the user changes themes.
+- Persist the user's theme preference appropriately.
+- Support operating-system theme preference.
+- Avoid visible theme flashing during initial loading where reasonably possible.
+- Keep the selected theme after route changes and refreshes.
+- Avoid mixing dark cards into light pages or light form fields into dark pages unintentionally.
+- Style charts, axes, legends, tooltips, dialogs, dropdowns, tables, sidebars, notifications, and calendar views for both themes.
+- Preserve the legibility of platform logos in both modes.
+- Use correct logo variants where available.
+- Keep all focus, hover, disabled, selected, and error states consistent.
+
+Use semantic CSS variables for both light and dark themes.
+
+Do not individually hardcode dark and light colors throughout every component.
+
+### Theme acceptance tests
+
+Verify all important pages in both Light and Dark mode.
+
+At minimum, test:
+
+- Public landing page.
+- Pricing page.
+- Sign-in and sign-up.
+- Dashboard.
+- Planner.
+- Composer.
+- AI Studio.
+- Analytics.
+- Channel directory.
+- Team management.
+- Billing and checkout.
+- Owner dashboard.
+- Owner pricing management.
+
+Do not mark theme support as complete if only the background color changes.
+
+---
+
+# SECTION 6 — RESPONSIVE DESIGN FOR EVERY SCREEN
+
+This requirement is mandatory.
+
+The application must look deliberately designed on mobile phones, tablets, laptops, desktop monitors, and wider displays.
+
+Do not merely shrink the desktop layout.
+
+Implement a mobile-first responsive layout using fluid sizes, content-aware grids, flexible containers, sensible breakpoints, and touch-friendly interactions.
+
+Use breakpoints as needed around these common viewport ranges:
+
+- Small mobile: 320–374 CSS pixels.
+- Standard mobile: 375–479 CSS pixels.
+- Large mobile: 480–767 CSS pixels.
+- Tablet: 768–1023 CSS pixels.
+- Small desktop or laptop: 1024–1279 CSS pixels.
+- Desktop: 1280–1535 CSS pixels.
+- Wide desktop: 1536 CSS pixels and above.
+
+Treat these as testing targets, not rigid rules that force every layout into the same structure.
+
+Support portrait and landscape orientations where practical.
+
+### Required viewport checks
+
+At minimum, test layouts resembling:
+
+- 320 × 640.
+- 360 × 800.
+- 390 × 844.
+- 430 × 932.
+- 768 × 1024.
+- 820 × 1180.
+- 1024 × 768.
+- 1280 × 800.
+- 1366 × 768.
+- 1440 × 900.
+- 1920 × 1080.
+
+If a testing tool is available, automate representative viewport checks.
+
+### Mobile layout
+
+On phones:
+
+- Use a compact navigation structure.
+- Convert the desktop sidebar into a mobile drawer, bottom navigation, or another clearly usable navigation pattern.
+- Keep primary actions accessible.
+- Use a mobile-friendly Create Post experience.
+- Prevent forms from overflowing the screen.
+- Stack dashboard cards logically.
+- Reflow analytics charts.
+- Replace wide tables with responsive tables, cards, or controlled horizontal scrolling where appropriate.
+- Make dialogs fit the viewport.
+- Keep filters accessible without consuming the entire screen.
+- Ensure menus are touch-friendly.
+- Prevent accidental clipping of buttons, dates, badges, inputs, and chart labels.
+- Respect mobile safe areas where appropriate.
+
+For mobile, prioritize the main activities: Dashboard, Planner, Create, Inbox, and More.
+
+Do not require users to zoom in to operate the product.
+
+### Tablet layout
+
+On tablets:
+
+- Use a collapsible sidebar or suitable tablet navigation.
+- Reflow two-column layouts as needed.
+- Keep chart labels readable.
+- Avoid compressing dense cards into narrow columns.
+- Adapt the planner for touch interactions.
+- Make tables and settings usable in portrait and landscape mode.
+- Keep primary actions visible without excessive scrolling.
+
+### Laptop and desktop layout
+
+On desktop:
+
+- Use a comfortable sidebar width.
+- Align page titles, cards, tables, and controls consistently.
+- Use multi-column dashboards where appropriate.
+- Maintain useful density without visual clutter.
+- Prevent excessive horizontal whitespace in central content areas.
+- Support wide analytics charts while maintaining readable labels.
+
+### Layout engineering rules
+
+- Never rely on fixed page widths that break on small devices.
+- Use `max-width`, `minmax()`, flexible grids, responsive flex layouts, and fluid spacing appropriately.
+- Use `clamp()` for fluid typography and dimensions where beneficial.
+- Prevent horizontal page overflow.
+- Avoid fixed heights for content that must expand.
+- Keep desktop sidebars and mobile navigation structurally consistent.
+- Handle calendar overflow carefully.
+- Avoid width-specific hacks for only one screenshot.
+- Check actual page content at each breakpoint, not just the navigation.
+- Keep all pages usable at a 320-pixel viewport width.
+
+A layout is not considered responsive merely because the sidebar disappears on mobile.
+
+---
+
+# SECTION 7 — GLOBAL NAVIGATION AND INFORMATION ARCHITECTURE
+
+Make Social Dominus extremely easy to learn.
+
+Users should understand where to find the main features without reading a manual.
+
+Use predictable, consistent navigation.
+
+## Public website navigation
+
+Provide:
+
+- Product.
+- Features.
+- Supported Channels.
+- Pricing.
+- Resources.
+- Sign In.
+- Start Free.
+
+Use appropriate mobile navigation on smaller screens.
+
+## Customer application navigation
+
+Organize the main sidebar as follows:
+
+**Workspace**
+- Dashboard.
+- Planner.
+- Publishing Queue.
+- Create Post.
+
+**Content**
+- AI Studio.
+- Content Library.
+- Content Categories.
+- Templates.
+
+**Community**
+- Unified Inbox.
+- Monitoring, where supported.
+- Notifications.
+
+**Insights**
+- Analytics.
+- Reports.
+
+**Manage**
+- Social Channels.
+- Team and Clients.
+- Approvals.
+- Workspaces.
+
+**Account**
+- Billing and Subscription.
+- Settings.
+- Help and Support.
+
+Keep only the highest-priority actions prominent. Use sensible groups and collapsible sections rather than one enormous menu.
+
+### Navigation behavior
+
+- Every navigation item must have a valid destination.
+- Every active page must have an obvious active state.
+- Breadcrumbs should be used where they materially improve orientation.
+- The workspace selector should be easy to identify.
+- Global search should have a clear interaction.
+- The profile menu should include appropriate account options.
+- Menus should support keyboard and touch navigation.
+- The same information architecture must be retained across responsive layouts.
+- The mobile navigation must preserve access to every feature through its primary destinations or a More menu.
+
+Implement a global Create Post action with a clear and predictable location.
+
+Avoid making the same action appear in many competing primary locations.
+
+---
+
+# SECTION 8 — PUBLIC MARKETING WEBSITE
+
+Implement the following routes:
+
+- `/`
+- `/features`
+- `/channels`
+- `/pricing`
+- `/about`
+- `/faq`
+- `/contact`
+- `/privacy`
+- `/terms`
+
+### Homepage hero
+
+Headline:
+
+**"Every Social Channel. One Command Center."**
+
+Supporting text:
+
+"Create smarter content, schedule with confidence, collaborate seamlessly, and understand your social media performance from one powerful workspace."
+
+Primary CTA: `Start Free`
+
+Secondary CTA: `Explore the Platform`
+
+Add a realistic product preview composed of actual UI components.
+
+### Homepage sections
+
+Include:
+
+1. Hero and primary conversion action.
+2. Supported social platforms.
+3. Unified publishing and scheduling.
+4. AI content creation.
+5. Content calendar and queue management.
+6. Analytics and reporting.
+7. Social inbox and engagement.
+8. Team collaboration and approvals.
+9. Agency and multi-workspace management.
+10. Subscription plans.
+11. FAQs.
+12. Final call to action.
+13. Professional footer.
+
+Do not invent customer testimonials, client logos, certifications, revenue results, or customer counts.
+
+### Marketing standards
+
+- Clear, professional English.
+- Strong but credible product messaging.
+- Responsive imagery or original interface previews.
+- Consistent buttons and CTAs.
+- Accessible text and colors.
+- Accurate links.
+- Working navigation.
+- Page titles and metadata appropriate to each public route.
+- No unfinished sections that appear ready for customers but contain placeholder content.
+
+---
+
+# SECTION 9 — AUTHENTICATION AND ONBOARDING
+
+Implement:
+
+- `/signup`
+- `/login`
+- `/forgot-password`
+- `/reset-password`
+- `/verify-email`
+- `/onboarding`
+
+### Sign-up
+
+Include:
+
+- Full name.
+- Email.
+- Password.
+- Confirm password.
+- Workspace or company name where appropriate.
+- Terms and privacy acceptance.
+- Password visibility.
+- Password strength feedback.
+- Validation messages.
+- Loading and error states.
+- Link to existing account sign-in.
+
+### Sign-in
+
+Include:
+
+- Email.
+- Password.
+- Show/hide password.
+- Remember-me preference where appropriate.
+- Forgot password.
+- Sign-in loading state.
+- Useful authentication errors.
+- Link to registration.
+
+Optional Google or other OAuth buttons may be included only as clearly labeled integration-ready elements until configured.
+
+### Password recovery
+
+Implement an appropriate form submission, confirmation screen, and reset-token route.
+
+Do not expose whether a particular email address exists unnecessarily.
+
+Do not falsely claim an email was sent if no actual email service handled the request.
+
+### Onboarding flow
+
+Use a simple guided setup:
+
+1. Welcome.
+2. Workspace setup.
+3. Business type and role.
+4. Business goals.
+5. Preferred social platforms.
+6. Timezone and publishing preferences.
+7. Completion.
+
+Show progress clearly. Include back, continue, and skip actions where appropriate.
+
+### Authentication truthfulness
+
+When real authentication is not connected, provide a clearly labeled demo flow.
+
+When PocketBase is connected later, use its actual authentication state and error responses.
+
+Do not store raw passwords in browser storage.
+
+Never create a false production-authentication experience.
+
+---
+
+# SECTION 10 — CUSTOMER DASHBOARD
+
+Route: `/app/dashboard`
+
+This is one of the most important screens.
+
+Design it as a professional social media operations command center.
+
+It must be visually impressive, easy to scan, and useful for daily work.
+
+### Dashboard header
+
+Include:
+
+- Personalized welcome.
+- Workspace selector.
+- Date-range selector.
+- Search.
+- Notifications.
+- Theme control.
+- Account menu.
+- Primary Create Post action.
+
+### Summary metrics
+
+Show cards for:
+
+- Published Posts.
+- Scheduled Posts.
+- Drafts.
+- Pending Approvals.
+- Publishing Failures.
+- Connected Channels.
+- Engagement Overview.
+- Follower Growth, where available.
+
+Only show meaningful metrics appropriate to the selected workspace and available data.
+
+### Main dashboard areas
+
+Include:
+
+- Publishing activity chart.
+- Performance trend chart.
+- Upcoming schedule.
+- Recent published-post examples.
+- Top-performing content when reliable data exists.
+- Channel-level performance summary.
+- Pending approval queue.
+- Recent workspace activity.
+- Channel connection health.
+- Plan usage overview.
+- Trial or subscription notice when relevant.
+
+### Quick actions
+
+Provide:
+
+- Create Post.
+- Open Planner.
+- Generate AI Content.
+- Connect Social Channel.
+- Import Content.
+- View Analytics.
+- Manage Subscription where appropriate.
+
+### Useful usability details
+
+- Clicking a metric card should take the user to a relevant detail page.
+- Clicking a scheduled post should open its details.
+- A failed post should expose a useful explanation if available.
+- A disconnected channel should have a clear repair action.
+- A quota warning should explain the limit and link to relevant options.
+- Empty states should guide first-time users.
+
+### Dashboard design standards
+
+Keep the visual hierarchy restrained and intentional.
+
+Use responsive grids.
+
+Do not display unrelated charts simply to make the screen look full.
+
+Use coherent sample data in demo mode and label it honestly.
+
+Every interactive card must lead to an actual relevant destination.
+
+---
+
+# SECTION 11 — SOCIAL PLANNER AND CALENDAR
+
+Route: `/app/planner`
+
+Build a full-featured publishing planner.
+
+### Calendar views
+
+Provide:
+
+- Month.
+- Week.
+- Day where practical.
+- List.
+- Queue.
+
+Include date navigation, current-date shortcut, timezone display, and clear status indicators.
+
+### Post organization
+
+Show:
+
+- Drafts.
+- Needs Review.
+- Approved.
+- Scheduled.
+- Publishing.
+- Published.
+- Failed.
+- Cancelled.
+
+Allow filtering by:
+
+- Platform.
+- Workspace.
+- Client.
+- Author.
+- Assignee.
+- Status.
+- Campaign.
+- Content type.
+
+### Post interactions
+
+Implement:
+
+- Create post from a selected date.
+- Open post details.
+- Edit post.
+- Duplicate post.
+- Reschedule post.
+- Move a post to the queue.
+- Change approval status when permitted.
+- Cancel a scheduled demo post.
+- Open publishing errors.
+- Use drag-and-drop where reliable and accessible.
+
+If drag-and-drop is implemented, provide an alternative accessible method for changing the scheduled date.
+
+Scheduling times must use the selected workspace timezone.
+
+The interface should explain daylight-saving or timezone ambiguity when relevant.
+
+### Smart scheduling
+
+Include an interface for suggested posting times and queue slot recommendations.
+
+Recommendations must be based on real available analytics when connected.
+
+When such data is unavailable, label the feature as a demonstration or show that data is required.
+
+Do not claim that estimated suggestions guarantee higher engagement.
+
+---
+
+# SECTION 12 — POST COMPOSER AND PUBLISHING
+
+Route: `/app/compose`
+
+Build a professional multi-platform composer.
+
+This must be one of the application's highest-quality workflows.
+
+### Composer layout
+
+Include:
+
+- Main content editor.
+- Selected social channels.
+- Platform-specific editor tabs.
+- Media attachment area.
+- Preview area.
+- Scheduling and publishing controls.
+
+On desktop, use a well-balanced editing and preview layout.
+
+On mobile, use a simplified, touch-friendly composer that does not create narrow or cramped columns.
+
+### Composer features
+
+Provide:
+
+- Text editing.
+- Media uploads.
+- Image and video previews.
+- Link field.
+- Link preview where appropriate.
+- Hashtags.
+- Mentions where supported.
+- Character counters.
+- Platform-specific formatting.
+- Separate caption or content variants for each channel.
+- Saved templates.
+- Draft saving.
+- Duplicate post.
+- Preview.
+- Schedule Post.
+- Add to Queue.
+- Publish Now.
+- Submit for Approval.
+
+Character limits, file restrictions, aspect ratios, account eligibility, and publishing capabilities must be configurable per network and post type.
+
+Do not assume every platform accepts identical media or content formats.
+
+### Publishing validation
+
+Show actionable validation for:
+
+- Missing required content.
+- Missing media.
+- Unsupported media type.
+- Invalid dimensions where known.
+- Exceeded text limits.
+- Unsupported content format.
+- Disconnected channel.
+- Insufficient permissions.
+- Missing scheduling information.
+- Approval requirements.
+- Subscription quota restrictions.
+
+### Publishing lifecycle
+
+Model the status of each destination separately.
+
+For example, one post may succeed on one network and fail on another.
+
+Display the result for each channel.
+
+Never show a failed or pending post as successfully published.
+
+In demo mode, show:
+
+"Demo Mode — No post was published to a real social account."
+
+The real production workflow must only show a confirmed publishing result after the connected service reports it.
+
+---
+
+# SECTION 13 — QUEUE AND BULK SCHEDULING
+
+Route: `/app/queue`
+
+Provide a complete scheduling queue.
+
+Include:
+
+- Queue slots.
+- Preferred posting times.
+- Posts awaiting a queue slot.
+- Upcoming scheduled posts.
+- Pause queue.
+- Resume queue.
+- Change queue times.
+- Rearrange eligible queued posts.
+- Filters by platform, workspace, and status.
+- Add to Queue.
+- Open post.
+- Duplicate post.
+- Move to a specific time.
+- Bulk actions where appropriate.
+
+### Bulk scheduling
+
+Include a CSV import workflow with:
+
+- Downloadable template.
+- Field mapping.
+- Upload validation.
+- Row preview.
+- Validation errors by row.
+- Duplicate-row detection.
+- Scheduling timezone.
+- Channel selection.
+- Import review.
+- Confirmation before applying the import.
+
+Allow export of relevant queue data when supported by available data.
+
+Do not silently discard invalid rows.
+
+The user must see which items will import successfully and which need correction.
+
+### Content categories
+
+Support reusable content categories such as:
+
+- Educational.
+- Promotional.
+- Behind the Scenes.
+- Product Updates.
+- Community.
+- Testimonials.
+- Evergreen.
+
+These are user-configurable categories, not mandatory fixed labels.
+
+Include future-ready support for category-based queue scheduling and content recycling, subject to user settings and platform requirements.
+
+Never recycle or republish content indefinitely without a clear customer-configured rule and visible status.
+
+---
+
+# SECTION 14 — AI CONTENT STUDIO
+
+Route: `/app/ai-studio`
+
+Build a premium AI-assisted content workspace.
+
+### Tools
+
+Include:
+
+- Caption generation.
+- Social post generation.
+- Content repurposing.
+- Hook generation.
+- Headline suggestions.
+- Short-form video scripts.
+- Hashtag suggestions.
+- Call-to-action suggestions.
+- Tone rewriting.
+- Grammar improvement.
+- Shorten.
+- Expand.
+- Translate.
+- Platform-specific adaptation.
+- Campaign brainstorming.
+- Weekly content plan generation.
+- Content calendar suggestions.
+- Brand voice instructions.
+
+### User inputs
+
+Allow the user to specify:
+
+- Topic.
+- Target audience.
+- Brand.
+- Social platform.
+- Campaign objective.
+- Tone.
+- Language.
+- Desired content length.
+- Brand voice.
+- Optional keywords.
+- Required or prohibited phrases.
+
+### Results
+
+Show editable output cards.
+
+Actions must include:
+
+- Generate.
+- Regenerate.
+- Rewrite.
+- Shorten.
+- Expand.
+- Copy.
+- Save as Draft.
+- Save as Template.
+- Send to Composer.
+
+### Brand voice profiles
+
+Allow customers to create named brand voice profiles containing:
+
+- Brand description.
+- Audience.
+- Tone.
+- Preferred language.
+- Style instructions.
+- Sample phrases.
+- Words to avoid.
+
+Allow authorized team members to select the appropriate profile.
+
+### AI integration
+
+Use a provider-independent `aiService`.
+
+When no real AI endpoint is configured, show clearly labeled demo output.
+
+Never claim that mock text was generated by a live model.
+
+Do not expose secret AI API keys in browser-delivered code.
+
+Track usage through the authoritative backend when connected.
+
+Apply plan-specific AI allowances and show understandable usage warnings.
+
+---
+
+# SECTION 15 — CONTENT LIBRARY AND ASSETS
+
+Route: `/app/library`
+
+Provide a structured content library for reusable marketing content.
+
+Include:
+
+- Grid view.
+- List view.
+- Search.
+- Filters.
+- Folders.
+- Categories.
+- Tags.
+- Favorites.
+- Images.
+- Video assets.
+- Saved captions.
+- Post templates.
+- Brand assets.
+- Alt text.
+- Upload date.
+- File metadata.
+- Asset details.
+- Associated posts.
+- Edit metadata.
+- Delete confirmation.
+
+### Upload interactions
+
+Support:
+
+- Drag-and-drop.
+- File selection.
+- Upload progress state.
+- Validation.
+- Preview.
+- Error state.
+- Retry where appropriate.
+
+Do not permanently persist temporary browser object URLs.
+
+Use an abstract file-storage adapter, ready for PocketBase storage or another configured file service.
+
+For future production use, validate file size and type on the backend and apply suitable access controls.
+
+---
+
+# SECTION 16 — UNIFIED INBOX AND COMMUNITY MANAGEMENT
+
+Route: `/app/inbox`
+
+Create a professional social engagement workspace.
+
+Include:
+
+- Conversation list.
+- Comments.
+- Available messages.
+- Mentions.
+- Platform identity.
+- Profile information.
+- Conversation history where available.
+- Search.
+- Unread filter.
+- Status filter.
+- Channel filter.
+- Assignment.
+- Internal notes.
+- Mark as read/unread.
+- Resolve and reopen.
+- Reply composer where supported.
+- Team assignment.
+- Priority.
+- Optional saved replies.
+
+### Additional capabilities
+
+Design integration-ready interfaces for:
+
+- Conversation assignment.
+- Collision awareness, where supported.
+- Review management.
+- Brand keyword monitoring.
+- Listening results.
+- Conversation analytics.
+
+These advanced features must be clearly separated from actual available data.
+
+Do not invent incoming messages or successful replies.
+
+A mock response must remain labeled as demo behavior.
+
+Only activate a real reply or moderation action after a configured integration and authorized backend operation.
+
+### Listening and monitoring
+
+Provide an appropriate monitoring area for supported keywords, mentions, and available content discovery.
+
+Do not suggest that every platform allows unrestricted access to public posts, DMs, review data, competitor data, or search endpoints.
+
+List limitations and required permissions explicitly.
+
+---
+
+# SECTION 17 — ANALYTICS AND REPORTING
+
+Routes:
+
+- `/app/analytics`
+- `/app/reports`
+
+Create an attractive, information-rich analytics workspace.
+
+### Analytics overview
+
+Include:
+
+- Reporting period.
+- Selected channels.
+- Workspace or client filter.
+- Published content volume.
+- Engagement.
+- Reach where available.
+- Impressions where available.
+- Follower growth where available.
+- Clicks where available.
+- Top-performing content.
+- Content type performance.
+- Publishing activity.
+- Cross-channel comparison where valid.
+- Campaign performance where supported.
+
+### Visualizations
+
+Use responsive charts with readable axes, proper legends, meaningful tooltips, and accessible contrast.
+
+Include:
+
+- Engagement trend.
+- Publishing activity.
+- Channel comparison.
+- Content-type breakdown.
+- Top posts.
+- Performance by date.
+- Available audience-growth metrics.
+
+### Data integrity
+
+Clearly distinguish:
+
+- Verified platform-reported data.
+- Connected-service data.
+- Estimated calculations.
+- Missing data.
+- Demo data.
+
+Never create fabricated live follower counts, reach, clicks, impressions, revenue, or engagement results.
+
+Do not compare metrics across platforms as though they have identical definitions when they do not.
+
+### Reports
+
+Provide:
+
+- Report preview.
+- Date selection.
+- Channel selection.
+- Workspace selection.
+- Branded report settings.
+- CSV export where implemented.
+- Print-friendly layout where appropriate.
+- PDF export only when an actual supported export method is implemented.
+
+Report export must use the currently selected data and filters.
+
+Do not generate fake PDF links or pretend an export was completed if it failed.
+
+---
+
+# SECTION 18 — SOCIAL CHANNEL DIRECTORY
+
+Route: `/app/channels`
+
+Display 15 social-platform integration cards:
+
+1. Facebook.
+2. Instagram.
+3. X.
+4. LinkedIn.
+5. YouTube.
+6. TikTok.
+7. Pinterest.
+8. Threads.
+9. WhatsApp Business.
+10. Google Business Profile.
+11. Bluesky.
+12. Mastodon.
+13. Reddit.
+14. Snapchat.
+15. Telegram.
+
+### Branding
+
+Use authentic official-brand logos or verified official-brand SVG assets.
+
+Preserve the correct appearance, proportions, recognizable colors, and suitable contrast of each brand mark.
+
+Use Lucide icons for general interface elements, not as fake replacements for real social-platform logos.
+
+### Integration cards
+
+Each card must include:
+
+- Platform logo.
+- Platform name.
+- Short description.
+- Supported account types where relevant.
+- Connection state.
+- Supported capabilities.
+- Connect or Manage action.
+- Setup instructions.
+- Error and permission states.
+
+Use statuses such as:
+
+- Not Connected.
+- Setup Required.
+- Connected.
+- Connected in Demo.
+- Reauthorization Required.
+- Error.
+- Feature Unavailable.
+
+### Capability matrix
+
+Design a channel capability model with configurable indicators for:
+
+- Publishing.
+- Scheduling.
+- Media support.
+- Analytics.
+- Comments.
+- Direct messages.
+- Listening.
+- Reviews.
+- Profile metrics.
+
+Do not mark every capability as available for every network.
+
+Account types, approval requirements, permissions, supported endpoints, rate limits, and media requirements must be verified against the current official platform documentation before production activation.
+
+Do not claim endorsement or affiliation by the listed platforms.
+
+---
+
+# SECTION 19 — TEAM, CLIENTS, WORKSPACES, AND APPROVALS
+
+Routes:
+
+- `/app/team`
+- `/app/workspaces`
+- `/app/approvals`
+
+Create a professional collaboration system suitable for agencies and businesses.
+
+### Workspaces
+
+Support:
+
+- Personal workspace.
+- Organization workspace.
+- Multiple client workspaces where plan entitlements allow.
+- Workspace selection.
+- Workspace-specific channels.
+- Workspace-specific posts.
+- Workspace-specific library.
+- Workspace-specific reports.
+- Workspace usage indicators.
+- Workspace settings.
+
+### Team management
+
+Include role options:
+
+- Owner.
+- Admin.
+- Manager.
+- Editor.
+- Contributor.
+- Analyst.
+
+Support:
+
+- Team member listing.
+- Invitation workflow.
+- Pending invitations.
+- Assignment.
+- Role changes.
+- Removal confirmation.
+- Membership states.
+- Workspace access summary.
+
+### Approvals
+
+Provide a complete approval workflow:
+
+1. Contributor creates content.
+2. Content is submitted for approval.
+3. Reviewer sees the request.
+4. Reviewer approves or rejects.
+5. Reviewer may provide comments.
+6. Author sees the result.
+7. Approved content can be scheduled by an authorized user.
+
+Include:
+
+- Approval queue.
+- Assigned reviewer.
+- Comments.
+- Approval history.
+- Filter by team, client, channel, and status.
+
+### Authorization
+
+Frontend role states are for presentation only.
+
+Real workspace membership, tenant isolation, and role permissions must be enforced by the backend.
+
+Never trust a user-supplied role or browser state as proof of administrative authorization.
+
+---
+
+# SECTION 20 — CUSTOMER SETTINGS AND SUBSCRIPTION BILLING
+
+Routes:
+
+- `/app/settings`
+- `/app/billing`
+- `/app/billing/checkout`
+- `/app/billing/invoices`
+
+### Settings
+
+Organize the settings experience into clean sections:
+
+**Profile**
+- Name.
+- Email.
+- Avatar.
+- Preferences.
+
+**Security**
+- Password management.
+- Email verification state.
+- Authentication providers.
+- Session-management interface.
+- Appropriate security notices.
+
+**Workspace**
+- Workspace name.
+- Logo.
+- Timezone.
+- Default publishing preferences.
+
+**Notifications**
+- Scheduling reminders.
+- Publishing failures.
+- Approval notifications.
+- Team updates.
+- Trial reminders.
+- Billing updates.
+
+**Brand**
+- Brand voice.
+- Default hashtags.
+- Branding assets.
+- Content instructions.
+
+**Connected Services**
+- Social accounts.
+- AI provider status where appropriate.
+- Integration status.
+
+**Privacy**
+- Data export request.
+- Account deletion request.
+- Privacy information.
+- Terms links.
+
+Every setting must have a meaningful action or an honest unavailable state.
+
+---
+
+# SECTION 21 — PRICING AND COMMERCIAL SUBSCRIPTION SYSTEM
+
+Create a complete commercial pricing experience.
+
+Use centralized, configurable plan definitions.
+
+Suggested launch pricing:
+
+| Plan | Monthly price | Annual price | Primary audience |
+|---|---:|---:|---|
+| Free | $0 | $0 | Individuals evaluating the product |
+| Starter | $15/month | $144/year | Individual creators and small businesses |
+| Growth | $39/month | $372/year | Growing teams |
+| Agency | $99/month | $948/year | Agencies and multi-client businesses |
+| Enterprise | Custom | Custom | Larger organizations |
+
+These are initial proposed prices, not mandatory permanent rates. They must be editable by the authorized owner.
+
+Display annual totals transparently.
+
+Do not display a monthly-equivalent annual rate as though it were the complete annual bill.
+
+Only display savings percentages when calculated accurately from the configured prices.
+
+### Free plan
+
+Suggested initial entitlements:
+
+- Up to 3 connected channel slots.
+- 1 workspace.
+- 1 user.
+- Up to 10 pending queue slots per channel at a time.
+- Basic scheduling.
+- Limited AI allowance.
+- Basic analytics.
+- Access to the content library.
+
+### Starter plan
+
+Suggested initial entitlements:
+
+- Up to 5 connected channel slots.
+- 1 workspace.
+- 1 user.
+- Up to 500 publishing jobs per month.
+- 100 AI credits per month.
+- Scheduling and queue.
+- Content library.
+- Basic analytics.
+- Available CSV exports.
+
+### Growth plan
+
+Suggested initial entitlements:
+
+- Up to 15 connected channel slots.
+- Up to 3 team seats.
+- Up to 3 workspaces.
+- Up to 2,000 publishing jobs per month.
+- 500 AI credits per month.
+- Advanced scheduling.
+- Platform-specific content variants.
+- Team collaboration.
+- Approvals.
+- Advanced analytics where available.
+- Extended reporting.
+
+### Agency plan
+
+Suggested initial entitlements:
+
+- Up to 50 connected channel slots.
+- Up to 10 team seats.
+- Up to 10 client workspaces.
+- Up to 5,000 publishing jobs per month.
+- 2,000 AI credits per month.
+- Client-level workspace organization.
+- Approval workflows.
+- Advanced reporting.
+- White-label report presentation.
+- Higher usage allowances.
+- Priority support options.
+
+### Enterprise plan
+
+Provide customizable:
+
+- Team seats.
+- Workspaces.
+- Channels.
+- Publishing allowances.
+- AI allowances.
+- Reporting.
+- Administrative capabilities.
+- Security options.
+- Contract and onboarding arrangements.
+
+Do not claim advanced security, SSO, service-level agreements, dedicated support, or other enterprise capabilities are active until implemented.
+
+### Pricing-page behavior
+
+Provide:
+
+- Monthly/yearly switch.
+- Plan cards.
+- Feature comparison.
+- Clear limits.
+- Trial eligibility.
+- Current plan indicator.
+- Recommended plan treatment where appropriate.
+- Upgrade and downgrade paths.
+- Enterprise contact action.
+- Responsive mobile comparison.
+
+The pricing page, checkout, customer billing screen, and owner plan management must all use the same pricing data source.
+
+---
+
+# SECTION 22 — FREE TRIAL AND SUBSCRIPTION LIFECYCLE
+
+Make the default paid-plan trial setting 14 days, configurable by the owner.
+
+Allow the owner to configure:
+
+- Trial eligibility.
+- Trial duration.
+- Eligible plans.
+- Whether a payment method is required.
+- Reminder schedule.
+- Expiration behavior.
+- Upgrade policy.
+- Grace period.
+- Cancellation policy.
+
+Do not collect a payment method during a trial unless the configured policy and chosen provider require or support that workflow.
+
+Never silently charge a user merely because a trial has ended without the appropriate disclosed subscription terms and an authorized billing setup.
+
+### Subscription states
+
+Support:
+
+- Free.
+- Trialing.
+- Active.
+- Past Due.
+- Payment Failed.
+- Grace Period.
+- Cancelled.
+- Expired.
+- Suspended.
+
+### Customer workflow
+
+Implement the complete intended flow:
+
+1. Visitor opens the pricing page.
+2. Visitor selects a plan and billing interval.
+3. Plan information is preserved through registration.
+4. Customer creates an account.
+5. Customer verifies email if required.
+6. Customer completes onboarding.
+7. The selected Free plan or paid trial is activated only when the service confirms the required operation.
+8. Customer enters the dashboard.
+9. Billing shows the correct status and usage limits.
+10. Customer can upgrade, downgrade, or cancel according to the configured policy.
+11. Customer sees renewal dates and available invoices.
+12. Payment failures produce clear, actionable notifications.
+13. A trial expiration leads to the configured state.
+14. Customers can review subscription history.
+
+### Entitlement enforcement
+
+Each plan has a set of centralized feature entitlements.
+
+When a user reaches a quota, show:
+
+- Current usage.
+- Allowed limit.
+- Reset date where applicable.
+- Available options.
+- A clear upgrade action.
+
+Actual quota enforcement must be performed by trusted backend logic, not frontend-only conditions.
+
+### Plan changes
+
+Handle changes carefully.
+
+- Confirm the selected destination plan.
+- Show price differences.
+- Show the effective date.
+- Explain proration when applicable.
+- Explain resource-limit consequences.
+- Do not silently delete excess content or channels.
+- Preserve historical data according to the configured retention policy.
+
+Do not claim a subscription has changed until the authoritative billing service or backend confirms it.
+
+---
+
+# SECTION 23 — PAYMENT METHODS AND CHECKOUT
+
+Build a clean payment and checkout experience that can support a suitable future provider.
+
+### Payment options
+
+Make the interface capable of representing:
+
+- Visa.
+- Mastercard.
+- American Express where supported.
+- Other supported payment cards.
+- PayPal where the selected merchant account and subscription APIs support it.
+- Apple Pay where supported.
+- Google Pay where supported.
+- Approved local payment methods.
+- Manual bank transfer.
+- Easypaisa and JazzCash only when an appropriate verified integration is available.
+
+Do not advertise a payment method as active just because its logo appears in the interface.
+
+### Payment-provider architecture
+
+Create replaceable server-side adapters for suitable providers, potentially including:
+
+- Stripe Billing and Stripe Checkout.
+- Paddle.
+- Lemon Squeezy.
+- PayPal.
+- An approved local gateway.
+- Manual bank transfer.
+
+Do not assume every provider is available or appropriate for every merchant jurisdiction and business model.
+
+Before production activation, verify business eligibility, recurring-payment support, settlement options, currency requirements, and applicable terms.
+
+### Checkout screen
+
+Display:
+
+- Selected plan.
+- Billing interval.
+- Price.
+- Applicable discount.
+- Taxes when determined by the configured provider or backend.
+- Final payable amount.
+- Billing currency.
+- Renewal frequency.
+- Trial terms, if applicable.
+- Terms acceptance where required.
+- Secure checkout action.
+
+Use provider-hosted checkout or an officially supported secure payment component.
+
+Never collect or store raw payment-card details in the Social Dominus frontend.
+
+### Payment status
+
+Show:
+
+- Pending.
+- Successful.
+- Failed.
+- Cancelled.
+- Refunded.
+- Partially Refunded where supported.
+
+A payment page must never mark a transaction as successful because a button was clicked.
+
+Production confirmation must be based on trusted provider confirmation or verified backend processing.
+
+### Manual payment workflow
+
+If manual transfer is enabled, support:
+
+- Payment instructions.
+- Reference ID.
+- Transaction ID submission.
+- Evidence upload where appropriate.
+- Pending verification.
+- Admin review.
+- Approval or rejection.
+- Audit history.
+
+Never activate a paid plan automatically just because a customer submits a payment reference.
+
+---
+
+# SECTION 24 — PRIVATE SOCIAL DOMINUS OWNER CONTROL CENTER
+
+This is a core requirement.
+
+Routes:
+
+- `/owner/dashboard`
+- `/owner/customers`
+- `/owner/subscriptions`
+- `/owner/plans`
+- `/owner/payments`
+- `/owner/coupons`
+- `/owner/usage`
+- `/owner/integrations`
+- `/owner/support`
+- `/owner/audit-log`
+- `/owner/settings`
+
+Create a dedicated administrative layout with a professional sidebar, administrative top bar, filters, tables, detail drawers, and confirmation dialogs.
+
+The Owner Control Center is distinct from the customer dashboard.
+
+Regular customers must not access it or see other customers' records.
+
+Real access must be controlled by secure backend authorization.
+
+### OWNER DASHBOARD
+
+Show, when the underlying verified data supports the calculation:
+
+- Total registered customers.
+- Active paying subscribers.
+- Free users.
+- Users on trial.
+- Trials expiring soon.
+- Active subscriptions.
+- Past-due subscriptions.
+- Monthly Recurring Revenue.
+- Annual Recurring Revenue.
+- Successful payments.
+- Failed payment attempts.
+- Refund amounts.
+- Subscription upgrades.
+- Subscription cancellations.
+- Trial-to-paid conversion.
+- Revenue trend.
+- Plan distribution.
+- Recent signups.
+- Recent billing events.
+
+Use clear metric definitions and date-range filters.
+
+Label all mock data as demo data.
+
+Do not calculate real collected revenue from pending or unverified transactions.
+
+### CUSTOMER MANAGEMENT
+
+Include:
+
+- Search.
+- Filters.
+- Customer profile.
+- Registration date.
+- Account status.
+- Email verification state.
+- Plan.
+- Trial state.
+- Subscription status.
+- Workspaces.
+- Usage summary.
+- Related billing records.
+- Support history.
+- Administrative notes.
+
+Include safe, confirmation-based actions such as suspension and reinstatement.
+
+Real actions must be authorized and audited by the backend.
+
+### SUBSCRIPTION MANAGEMENT
+
+Show:
+
+- Customer.
+- Plan.
+- Billing frequency.
+- Status.
+- Trial dates.
+- Renewal date.
+- Current billing period.
+- Cancellation status.
+- Access-through date where applicable.
+- Provider subscription reference when available.
+- Related invoices.
+- Subscription history.
+
+Provide filters for status and plan.
+
+### PLAN AND PRICING MANAGEMENT
+
+Allow the owner to:
+
+- Create a plan.
+- Edit a plan.
+- Configure prices.
+- Configure annual rates.
+- Configure currency.
+- Configure limits.
+- Configure features.
+- Configure the trial.
+- Enable/disable availability.
+- Publish or hide a plan.
+- Change display order.
+- Set a recommended plan.
+- Archive plans.
+
+Plan edits must update the central pricing configuration and the customer-facing pricing page in the connected service architecture.
+
+Do not unexpectedly change existing subscribers' contracts or provider prices without a defined migration policy.
+
+### PAYMENT MANAGEMENT
+
+Include:
+
+- Transactions.
+- Customer.
+- Plan.
+- Amount.
+- Currency.
+- Provider.
+- Transaction reference.
+- Payment status.
+- Invoice reference.
+- Refund status.
+- Failure reason where available.
+- Timestamps.
+- Pending manual-payment reviews.
+
+Real refunds must only be initiated through authorized server-side provider APIs.
+
+### COUPON MANAGEMENT
+
+Allow:
+
+- Coupon name.
+- Unique code.
+- Percentage discount.
+- Fixed amount.
+- Eligible plans.
+- Eligible billing intervals.
+- Start date.
+- Expiry date.
+- Total redemption limit.
+- Per-customer redemption limit.
+- First-time customer rules.
+- Discount duration.
+- Active/inactive status.
+
+Show redemptions and remaining eligibility.
+
+The backend must revalidate coupon eligibility and discount amount. Do not trust frontend calculations for real billing.
+
+### USAGE MANAGEMENT
+
+Monitor:
+
+- Connected channel slots.
+- Publishing jobs.
+- AI usage.
+- Workspace counts.
+- Team seats.
+- File storage.
+- API request usage where relevant.
+- Usage by plan.
+- Usage by customer.
+- Limit warnings.
+
+Allow central configuration of limits.
+
+Actual usage enforcement must happen through trusted backend services.
+
+### INTEGRATION MANAGEMENT
+
+Display service status for:
+
+- PocketBase.
+- Payment provider.
+- AI provider.
+- Social publishing adapters.
+- Analytics adapters.
+- Email delivery provider.
+- File storage.
+- Webhook handling.
+- Monitoring or error-reporting service where configured.
+
+Show Not Configured, Setup Required, Test Mode, Connected, or Error as appropriate.
+
+Never display private credentials.
+
+Never represent a mock connection as live.
+
+### SUPPORT MANAGEMENT
+
+Provide:
+
+- Support ticket list.
+- Priority.
+- Category.
+- Customer.
+- Subject.
+- Status.
+- Assignee.
+- Creation date.
+- Last update.
+- Internal notes.
+- Resolution history.
+
+### AUDIT LOG
+
+Record important administrative activities including:
+
+- Plan changes.
+- Pricing changes.
+- Coupon changes.
+- Account suspension.
+- Subscription administration.
+- Payment verification.
+- Refund requests.
+- Integration changes.
+- Feature configuration.
+
+Actual production audit records must be created securely by the backend. Clearly identify simulated demonstration events.
+
+### GLOBAL OWNER SETTINGS
+
+Include:
+
+- Brand name and logo.
+- Support contact.
+- Default timezone.
+- Default currency.
+- Registration availability.
+- Trial rules.
+- Cancellation policy.
+- Grace-period settings.
+- Pricing visibility.
+- Notification settings.
+- AI quotas.
+- Feature flags.
+- Payment configuration status.
+- System announcements.
+- Security and access-control overview.
+
+Never expose a privileged PocketBase credential in the browser.
+
+---
+
+# SECTION 25 — CENTRAL PLAN AND ENTITLEMENT CONFIGURATION
+
+Do not define plan limits separately across unrelated components.
+
+Create a single typed plan registry or plan service.
+
+Each plan must have:
+
+- ID.
+- Name.
+- Description.
+- Monthly price.
+- Annual price.
+- Currency.
+- Billing interval.
+- Trial eligibility.
+- Trial duration.
+- Connected-channel limit.
+- Workspace limit.
+- Team-seat limit.
+- Publishing-job quota.
+- AI credit allowance.
+- File-storage limit where applicable.
+- Analytics retention.
+- Enabled features.
+- Disabled features.
+- Plan visibility.
+- Active status.
+- Sort order.
+- Provider product mapping where required.
+
+Support additional future plans without redesigning the application's screens.
+
+A feature should check a well-defined entitlement rather than comparing hardcoded plan names throughout the codebase.
+
+If the Owner Control Center changes a plan in demo mode, the public pricing page, billing overview, and quota displays should reflect the new central configuration.
+
+Production entitlement changes must come from the authoritative backend.
+
+---
+
+# SECTION 26 — POCKETBASE AND BACKEND-READY SERVICE LAYER
+
+The current deliverable is a frontend with a clear path to production.
+
+Do not claim PocketBase integration is live unless it has actually been configured and tested.
+
+Create typed service interfaces for:
+
+- `authService`
+- `userService`
+- `workspaceService`
+- `postService`
+- `calendarService`
+- `queueService`
+- `channelService`
+- `mediaService`
+- `analyticsService`
+- `inboxService`
+- `teamService`
+- `approvalService`
+- `planService`
+- `subscriptionService`
+- `billingService`
+- `paymentService`
+- `couponService`
+- `usageService`
+- `aiService`
+- `notificationService`
+- `supportService`
+- `adminService`
+
+Implement mock services that conform to these interfaces.
+
+Keep mock implementation details separate from presentation components.
+
+Prepare production adapters for future PocketBase and integration work.
+
+### Data models
+
+Provide suitable TypeScript contracts for:
+
+- User.
+- Workspace.
+- Workspace membership.
+- Social channel.
+- Integration state.
+- Social post.
+- Platform-specific post variant.
+- Publishing result.
+- Media asset.
+- Analytics metric.
+- Conversation.
+- Team invitation.
+- Approval request.
+- Subscription plan.
+- Entitlement.
+- Subscription.
+- Invoice.
+- Payment transaction.
+- Coupon.
+- Usage record.
+- Support ticket.
+- Notification.
+- Administrative audit event.
+
+### Tenant isolation
+
+Every tenant-owned record must have a clearly defined workspace or organization ownership model.
+
+Actual backend access rules must prevent users from reading or modifying other customers' records.
+
+Do not rely on hidden UI elements or frontend role checks for security.
+
+### Scheduled publishing architecture
+
+Do not rely on a browser timer or open customer tab to publish scheduled posts.
+
+Real scheduling requires a trusted backend process, worker, scheduler, or job-processing service that continues functioning when the user logs out or closes the browser.
+
+Define the interface for:
+
+- Creating scheduled jobs.
+- Validating the schedule.
+- Dispatching eligible jobs.
+- Handling retryable errors.
+- Recording per-platform results.
+- Handling failed publication.
+- Preventing duplicate publication.
+- Processing cancellation requests.
+- Updating scheduling status.
+
+Document which parts use PocketBase and which require additional server-side execution or integration services.
+
+### Payment events
+
+Real billing changes must use verified provider events and secure backend processing.
+
+Support:
+
+- Duplicate-event handling.
+- Idempotent processing.
+- Validated state transitions.
+- Appropriate audit records.
+- Safe error handling.
+
+### AI processing
+
+Real AI generation must use a secured backend endpoint or trusted integration layer.
+
+Never expose private API keys in client-delivered code.
+
+### File storage
+
+Design for PocketBase storage or another configured provider. Clearly separate metadata from file-storage operations.
+
+---
+
+# SECTION 27 — 15 MAIN CUSTOMER PAGE GROUPS
+
+The application must include the following 15 major customer experience groups:
+
+1. Public Website and Pricing.
+2. Authentication and Password Recovery.
+3. Onboarding and Workspace Setup.
+4. Dashboard.
+5. Planner and Calendar.
+6. Composer and Publishing Workflow.
+7. Queue and Bulk Scheduling.
+8. AI Content Studio.
+9. Content Library and Templates.
+10. Unified Inbox and Monitoring.
+11. Analytics and Reports.
+12. Social Channels and Integrations.
+13. Team and Approvals.
+14. Workspaces and Client Management.
+15. Account Settings and Subscription Billing.
+
+Additional routes such as help, invoices, checkout, and specific owner-administration screens must also work.
+
+Each page group can have subroutes where appropriate.
+
+No important route should lead to a blank page.
+
+---
+
+# SECTION 28 — DATA PERSISTENCE AND DEMO MODE
+
+Provide coherent demonstration data across the entire app.
+
+Include sample:
+
+- Users.
+- Workspaces.
+- Connected and disconnected channels.
+- Draft posts.
+- Scheduled posts.
+- Published post examples.
+- Failed publishing examples.
+- Team members.
+- Approvals.
+- Media.
+- Conversations.
+- Analytics.
+- Subscription plans.
+- Trial users.
+- Subscription records.
+- Payment states.
+- Coupons.
+
+All demonstration records must be clearly labeled as simulated.
+
+Create a unified mock data source.
+
+Do not independently hardcode contradictory versions of the same data in different pages.
+
+When a mock action changes a post, subscription display, plan configuration, or workspace preference, update the relevant application state consistently.
+
+Do not store raw passwords or private credentials.
+
+Use browser storage only for suitable non-sensitive preferences or temporary demo behavior.
+
+Do not present browser storage as a secure production database.
+
+Add an obvious Demo Mode indicator where a user could otherwise mistake sample activity for a real operation.
+
+---
+
+# SECTION 29 — ACCESSIBILITY AND USABILITY
+
+Use WCAG 2.2 AA as the principal accessibility target where applicable.
+
+Implement:
+
+- Semantic HTML.
+- Proper labels.
+- Keyboard accessibility.
+- Visible focus states.
+- Clear error messages.
+- Accessible dialogs.
+- Accessible dropdown menus.
+- Readable color contrast.
+- Touch-friendly targets.
+- Helpful status text.
+- Logical keyboard order.
+- Accessible chart descriptions.
+- Reduced-motion support.
+- Screen-reader-friendly buttons and controls.
+- Responsive text and spacing.
+
+Use approximately 44 × 44 CSS pixels as a practical touch-target goal for important mobile actions where feasible.
+
+Do not communicate status using color alone.
+
+Use icons with accessible labels when appropriate.
+
+Make the product understandable to a first-time user.
+
+Prefer familiar terminology, clear verbs, meaningful defaults, short forms, inline help, and progressive disclosure.
+
+Do not put every advanced setting in the primary interface.
+
+Advanced features should be available without overwhelming beginners.
+
+---
+
+# SECTION 30 — PERFORMANCE AND RELIABILITY
+
+Build the application with reasonable performance practices.
+
+Implement as appropriate:
+
+- Reusable components.
+- Route-based lazy loading.
+- Sensible data caching.
+- Debounced search where helpful.
+- Pagination for large datasets.
+- Efficient list rendering.
+- Optimized media previews.
+- Loading skeletons.
+- Error boundaries.
+- Retry where safe.
+- Duplicate-submission prevention.
+- Form disabling during submission.
+- Stable and consistent state management.
+
+Avoid:
+
+- Unnecessary full-page reloads.
+- Excessive rendering.
+- Repeated requests caused by careless effects.
+- Large assets without suitable handling.
+- State changes that silently overwrite user content.
+- Broken loading states.
+- Infinite loading without recovery.
+- Uncontrolled optimistic updates for financial operations.
+
+For real external operations, clearly distinguish pending status from confirmed success.
+
+---
+
+# SECTION 31 — SECURITY AND COMMERCIAL READINESS
+
+This project must be honest about the distinction between frontend completeness and production service readiness.
+
+Follow these rules:
+
+- Never store plain-text passwords.
+- Never expose private API keys.
+- Never expose PocketBase superuser credentials.
+- Never treat client-side role checks as authoritative.
+- Do not allow a UI-only upgrade to grant real paid entitlements.
+- Do not fabricate payment confirmations.
+- Do not fabricate successful refunds.
+- Do not fabricate published posts.
+- Do not falsely claim emails were delivered.
+- Do not falsely claim analytics were synchronized.
+- Do not fake OAuth authorization.
+- Do not fake successful social-account connection.
+- Enforce workspace isolation in the backend.
+- Validate user input at appropriate boundaries.
+- Confirm destructive actions.
+- Protect administrative operations.
+- Validate provider webhooks before applying critical state changes.
+
+Add a production-readiness checklist separating:
+
+- Implemented frontend.
+- Mocked frontend behavior.
+- Backend required.
+- Provider configuration required.
+- Provider approval required.
+- Verified and tested integration.
+
+Do not claim full production readiness while critical backend or integration work remains incomplete.
+
+---
+
+# SECTION 32 — COMPLETE USER JOURNEY TESTS
+
+Implement and test the most important workflows in order.
+
+### Journey A — New customer
+
+Landing Page → Pricing → Select Plan → Sign Up → Email Verification State → Onboarding → Workspace Creation → Dashboard.
+
+The selected plan must remain consistent throughout the journey.
+
+### Journey B — Free plan
+
+Pricing → Start Free → Sign Up → Onboarding → Dashboard → Free Entitlement Display.
+
+The customer must not be shown an unwanted payment requirement.
+
+### Journey C — Paid plan
+
+Pricing → Select Paid Plan → Sign Up → Trial or Checkout According to Policy → Verified Service Response → Billing State → Dashboard.
+
+In demo mode, clearly identify mock behavior.
+
+### Journey D — Create and schedule a post
+
+Dashboard → Create Post → Select Channels → Enter Content → Preview → Validate → Schedule → Planner → Post Details.
+
+All mock states should stay consistent.
+
+### Journey E — Approval
+
+Create Post → Submit for Approval → Reviewer Opens Request → Approve or Reject → Author Sees Updated Status.
+
+### Journey F — AI content
+
+AI Studio → Enter Brief → Generate Demo Output or Call Configured AI Service → Edit Output → Save Draft → Open Composer.
+
+### Journey G — Upgrade
+
+Billing → View Plans → Choose New Plan → Confirm Terms → Provider or Demo Response → Updated Displayed Subscription State.
+
+Production entitlements must not change until authorized backend confirmation.
+
+### Journey H — Cancel subscription
+
+Billing → Cancel Subscription → Review Consequences → Confirm → Display Authoritative Outcome.
+
+### Journey I — Owner administration
+
+Owner Login → Owner Dashboard → Edit Plan → Update Pricing → Review Public Pricing → Verify Consistent Shared Data.
+
+### Journey J — Payment review
+
+Owner Payments → Open Pending Payment → Review Evidence or Provider State → Approve or Reject Where Authorized → Audit Entry.
+
+### Journey K — Workspace isolation
+
+Switch Workspace → View Workspace Data → Verify that posts, channels, team members, billing access, and content are scoped appropriately.
+
+### Journey L — Theme and responsive behavior
+
+Open the same key page in Light, Dark, and System themes.
+
+Test it across mobile, tablet, laptop, and desktop widths.
+
+Check forms, tables, calendars, charts, navigation, dialogs, and action buttons rather than only the hero section.
+
+---
+
+# SECTION 33 — REQUIRED TESTING AND ACCEPTANCE CHECKLIST
+
+Before declaring the frontend complete, verify each of these areas.
+
+## Design
+
+- One consistent Social Dominus brand identity.
+- One shared design system.
+- Coherent spacing and typography.
+- Complete Light and Dark themes.
+- Correct theme persistence.
+- Professional dashboard hierarchy.
+- Consistent interaction states.
+
+## Responsiveness
+
+- No major horizontal page overflow.
+- No clipped modals.
+- No unusable mobile menus.
+- No truncated essential buttons.
+- No narrow, unreadable tables.
+- No broken chart labels.
+- No inaccessible controls.
+- All major routes work at representative viewport sizes.
+
+## Navigation
+
+- All major routes load.
+- All navigation links work.
+- Active states are correct.
+- Mobile navigation reaches all features.
+- Back navigation behaves sensibly.
+- Global actions lead to real interface flows.
+
+## Functionality
+
+- Forms validate.
+- Buttons produce meaningful outcomes.
+- Search and filters work.
+- Calendar controls work.
+- Composer and queue state is coherent.
+- Drafts can be created and edited.
+- Demo statuses remain consistent.
+- AI tools have functional demo actions.
+- Channel integration states are explicit.
+- Analytics filters behave correctly.
+- Team and approval interactions work.
+- Settings update the correct demo state.
+
+## SaaS business operations
+
+- Every plan uses central configuration.
+- Pricing is consistent on all relevant screens.
+- Annual totals are accurate.
+- Trial status is displayed clearly.
+- Subscription states are coherent.
+- Checkout does not falsely claim payment success.
+- Coupons validate consistently in the demo.
+- Plan entitlements are represented correctly.
+- Owner pricing edits update the shared plan source.
+- Admin-only routes have appropriate frontend access guards.
+- Production security dependencies are documented.
+
+## Engineering
+
+- No major TypeScript errors.
+- No missing imports.
+- No broken routes.
+- No major console errors.
+- No dead primary controls.
+- No exposed secret credentials.
+- No inconsistent mock data.
+- No unexplained build failure.
+
+Use the available test tooling.
+
+If Playwright is available, run representative end-to-end and viewport tests. If a particular environment or browser cannot be tested, record the limitation rather than pretending it was tested.
+
+---
+
+# SECTION 34 — PROJECT DOCUMENTATION
+
+Create or update these project documents:
+
+**`PRODUCT_SPEC.md`**
+
+Document product scope, customer roles, key features, and the intended user journeys.
+
+**`DESIGN_SYSTEM.md`**
+
+Document colors, themes, typography, spacing, components, responsive breakpoints, and accessibility rules.
+
+**`ROUTES_AND_WORKFLOWS.md`**
+
+Document all important routes, navigation groups, and major workflows.
+
+**`DATA_CONTRACTS.md`**
+
+Document important TypeScript models, ownership relationships, subscription states, and service interfaces.
+
+**`INTEGRATION_MATRIX.md`**
+
+Document every required integration and identify its status:
+
+- Mocked.
+- Designed.
+- Awaiting configuration.
+- Connected.
+- Verified.
+- Unsupported.
+
+**`PRICING_AND_ENTITLEMENTS.md`**
+
+Document the central plan model, proposed initial prices, quotas, trial settings, and entitlements.
+
+**`QA_CHECKLIST.md`**
+
+Record implemented test cases and actual test results.
+
+**`KNOWN_LIMITATIONS.md`**
+
+Document anything that still needs backend configuration, platform permissions, provider approval, or additional implementation.
+
+Keep these documents consistent with the actual code. Do not use them to claim features that have not been implemented.
+
+---
+
+# SECTION 35 — IMPLEMENTATION ORDER
+
+Complete the work in this order, while implementing actual project files:
+
+1. Inspect the project and establish the technical baseline.
+2. Implement the shared Social Dominus design system.
+3. Implement the Light, Dark, and System theme provider.
+4. Build the responsive public website and pricing page.
+5. Build authentication and onboarding.
+6. Build the application shell and navigation.
+7. Build the customer dashboard.
+8. Build the planner, composer, queue, and bulk scheduling interfaces.
+9. Build the AI Studio and content library.
+10. Build the unified inbox, channels, and analytics.
+11. Build teams, workspaces, approvals, and settings.
+12. Build the customer billing experience.
+13. Build the complete SaaS Owner Control Center.
+14. Connect coherent mock services.
+15. Verify consistent shared data across workflows.
+16. Test responsiveness and both themes.
+17. Test major user journeys.
+18. Fix identified defects.
+19. Produce the required documentation.
+20. Verify the project build and launch the application preview when the environment supports it.
+
+Do not stop after any individual phase merely because a screenshot looks attractive.
+
+Do not replace unimplemented pages with placeholder routes.
+
+Do not silently remove difficult product requirements.
+
+Where a real external integration is unavailable, implement the complete relevant frontend states and service interface, document the missing dependency, and preserve the intended workflow.
+
+---
+
+# SECTION 36 — FINAL ACCEPTANCE REQUIREMENTS
+
+The deliverable is acceptable only when:
+
+- Social Dominus has a distinctive, premium appearance.
+- The marketing website is polished and functional.
+- The customer dashboard looks and behaves like a professional SaaS application.
+- The Owner Control Center exists separately and has coherent administrative navigation.
+- The 15 main customer page groups have been implemented.
+- All important supporting routes have meaningful content.
+- Light Mode and Dark Mode work consistently.
+- System theme preference is supported.
+- Desktop, laptop, tablet, and mobile layouts have been designed intentionally.
+- Navigation is straightforward.
+- Essential buttons and actions work in demo mode.
+- Pricing, trial, subscription, and entitlement displays use consistent shared data.
+- Customers and administrators see the correct interface for their intended role.
+- Social platform cards use authentic recognizable brand icons.
+- Mock connections and analytics are clearly labeled.
+- Payment and subscription states do not falsely claim verified transactions.
+- PocketBase and external service integration boundaries are documented.
+- Production security requirements are clearly separated from frontend behavior.
+- Important user journeys have been tested.
+- Known limitations are documented.
+- The build succeeds, or a specific, evidence-based blocker is recorded.
+
+---
+
+# FINAL DIRECTIVE
+
+Build Social Dominus as an outstanding, original, premium SaaS product with a clear user experience, an exceptionally consistent design system, fully responsive layouts, Light and Dark modes, professional analytics, AI-assisted content tools, multi-platform scheduling interfaces, customer billing, and a separate SaaS Owner Control Center.
+
+The application must be straightforward for beginners, practical for daily professional work, and extensible for agencies and larger teams.
+
+Use modern, currently supported technology and verify external platform capabilities before describing them as available.
+
+Prioritize usability, visual precision, stable navigation, consistent data, maintainable architecture, secure integration boundaries, and tested customer journeys.
+
+Implement the actual code and screens. Do not merely explain how to build them.
+
+Do not end the task after producing a landing page or dashboard preview.
+
+Do not invent successful integrations or financial transactions.
+
+**The target is a complete and coherent Social Dominus frontend that minimizes future rework and provides a well-defined foundation for PocketBase, secure scheduling services, real AI integrations, verified social-platform APIs, and subscription billing.**

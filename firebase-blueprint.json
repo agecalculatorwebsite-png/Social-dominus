@@ -1,0 +1,136 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with workspace role and plan state",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "photoURL": { "type": "string", "maxLength": 1024 },
+        "role": { "type": "string", "enum": ["owner", "admin", "manager", "editor", "contributor", "analyst"] },
+        "planId": { "type": "string", "enum": ["free", "starter", "growth", "agency", "enterprise"] },
+        "planInterval": { "type": "string", "enum": ["monthly", "yearly"] },
+        "subscriptionStatus": { "type": "string", "enum": ["free", "trialing", "active", "cancelled"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Workspace": {
+      "title": "Workspace",
+      "description": "Workspace for multi-brand and agency organization",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 128 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "timezone": { "type": "string", "maxLength": 64 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "ownerId"]
+    },
+    "SocialPost": {
+      "title": "SocialPost",
+      "description": "Social media post scheduled or published across platforms",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "workspaceId": { "type": "string", "maxLength": 128 },
+        "authorId": { "type": "string", "maxLength": 128 },
+        "authorName": { "type": "string", "maxLength": 128 },
+        "authorAvatar": { "type": "string", "maxLength": 1024 },
+        "content": { "type": "string", "maxLength": 10000 },
+        "channels": { "type": "array" },
+        "status": { "type": "string", "enum": ["draft", "needs_review", "approved", "scheduled", "published", "failed"] },
+        "category": { "type": "string", "maxLength": 64 },
+        "mediaUrls": { "type": "array" },
+        "scheduledAt": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "workspaceId", "authorId", "content", "status"]
+    },
+    "MediaItem": {
+      "title": "MediaItem",
+      "description": "User uploaded media asset",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "workspaceId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 256 },
+        "url": { "type": "string", "maxLength": 2048 },
+        "storagePath": { "type": "string", "maxLength": 512 },
+        "size": { "type": "number" },
+        "type": { "type": "string", "maxLength": 64 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "url"]
+    },
+    "SocialChannel": {
+      "title": "SocialChannel",
+      "description": "Connected social media channel",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "workspaceId": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "platform": { "type": "string", "maxLength": 64 },
+        "accountName": { "type": "string", "maxLength": 128 },
+        "accountHandle": { "type": "string", "maxLength": 128 },
+        "status": { "type": "string", "enum": ["connected", "not_connected", "reauth_required"] },
+        "connectedAt": { "type": "string" }
+      },
+      "required": ["id", "workspaceId", "userId", "platform", "accountName", "status"]
+    },
+    "AiDraft": {
+      "title": "AiDraft",
+      "description": "AI-generated social copy and ideas",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "workspaceId": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "topic": { "type": "string", "maxLength": 500 },
+        "platform": { "type": "string", "maxLength": 64 },
+        "tone": { "type": "string", "maxLength": 64 },
+        "result": { "type": "string", "maxLength": 10000 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "workspaceId", "userId", "result"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents keyed by Firebase Auth UID"
+    },
+    "/workspaces/{workspaceId}": {
+      "schema": "Workspace",
+      "description": "Workspaces created by users"
+    },
+    "/posts/{postId}": {
+      "schema": "SocialPost",
+      "description": "Social media posts in workspaces"
+    },
+    "/media/{mediaId}": {
+      "schema": "MediaItem",
+      "description": "Uploaded media items metadata"
+    },
+    "/channels/{channelId}": {
+      "schema": "SocialChannel",
+      "description": "Connected social platform accounts"
+    },
+    "/ai_drafts/{draftId}": {
+      "schema": "AiDraft",
+      "description": "Saved AI copy drafts"
+    },
+    "/test/{docId}": {
+      "schema": { "$ref": "test" },
+      "description": "Connection test document"
+    }
+  }
+}

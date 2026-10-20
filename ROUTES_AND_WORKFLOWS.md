@@ -1,0 +1,41 @@
+# Routes and User Workflows
+
+## 1. Route Map
+- **Public Marketing Website**:
+  - `/` — Homepage with Hero, 15 Social Gateways, AI Studio preview, and dynamic pricing
+  - `/features` — Deep dive into multi-channel publishing, approval gates, and queue slots
+  - `/channels` — 15 platforms directory & character capability matrices
+  - `/pricing` — 5-tier pricing calculator with monthly/yearly switch (~20% savings)
+  - `/about` — Architecture, vision, and core directives
+  - `/faq` — Frequently asked questions & security safeguards
+  - `/privacy` & `/terms` — Governance and legal notices
+- **Authentication**:
+  - `/login` — Google Sign-in with Firebase Auth + one-click instant demo login
+  - `/signup` — Account registration with plan selection preservation
+  - `/forgot-password` — Password recovery flow
+  - `/onboarding` — 4-step guided workspace and goal wizard
+- **Customer Application**:
+  - `/app/dashboard` — Operations command center with 8 metric cards, activity trends, and queue summary
+  - `/app/planner` — Visual calendar (Month/Week/List views, date filters, post detail drawer)
+  - `/app/compose` — Multi-platform composer with platform tabs, mobile & desktop previews, and validation
+  - `/app/queue` — Smart time slots, pause/resume queue, and CSV bulk importer
+  - `/app/ai-studio` — AI copy generator, viral hooks, brand voice profile, and composer export
+  - `/app/library` — Asset repository (media grid, tag filters, saved captions, upload simulation)
+  - `/app/inbox` — Unified community inbox, thread view, and simulated reply dispatch
+  - `/app/analytics` — Engagement trends, impression distribution, and top performing posts
+  - `/app/reports` — White-label branded report builder (PDF & CSV export simulations)
+  - `/app/channels` — 15 official gateways with Connect/Disconnect toggle and health status
+  - `/app/team` — Team seats, role RBAC (Owner, Editor, Contributor, Analyst), invite modal
+  - `/app/workspaces` — Tenant isolation switcher and client workspace creator
+  - `/app/approvals` — Approval review queue with revision comments and schedule gating
+  - `/app/billing` — Tier quota indicators, invoice history, and coupon checkout modal
+  - `/app/settings` — Profile, notifications, security credentials, and brand voice rules
+- **Owner Control Center**:
+  - `/owner/dashboard` — Executive MRR, ARR, active subscriber distribution, and revenue curve
+  - `/owner/customers` — Master tenant registry with suspension and reinstatement
+  - `/owner/plans` — Real-time central pricing editor (synchronizes globally with public site)
+  - `/owner/coupons` — Promotional campaign creator (percentage and fixed discounts)
+  - `/owner/payments` — Settlement audit log and transaction receipts
+  - `/owner/integrations` — Service health telemetry for Firebase, AI, and social gateways
+  - `/owner/audit-log` — Administrative audit trail
+  - `/owner/settings` — Global SaaS defaults (trial duration, brand settings)

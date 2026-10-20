@@ -1,0 +1,114 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwnerAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'agecalculator.website@gmail.com' ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Connection testing
+    match /test/{docId} {
+      allow read, write: if isSignedIn();
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow get: if isSignedIn() && (request.auth.uid == userId || isOwnerAdmin());
+      allow list: if isSignedIn() && (request.auth.uid == userId || isOwnerAdmin());
+      allow create: if isSignedIn() && isValidId(userId) && request.auth.uid == userId
+        && incoming().uid == request.auth.uid;
+      allow update: if isSignedIn() && (
+        (request.auth.uid == userId && incoming().uid == existing().uid)
+        || isOwnerAdmin()
+      );
+      allow delete: if isOwnerAdmin();
+    }
+
+    // Workspaces Collection
+    match /workspaces/{workspaceId} {
+      allow read: if isSignedIn() && (resource.data.ownerId == request.auth.uid || isOwnerAdmin());
+      allow create: if isSignedIn() && isValidId(workspaceId)
+        && incoming().ownerId == request.auth.uid
+        && incoming().name is string
+        && incoming().name.size() > 0;
+      allow update: if isSignedIn() && (
+        (existing().ownerId == request.auth.uid && incoming().ownerId == existing().ownerId)
+        || isOwnerAdmin()
+      );
+      allow delete: if isSignedIn() && (existing().ownerId == request.auth.uid || isOwnerAdmin());
+    }
+
+    // Posts Collection
+    match /posts/{postId} {
+      allow read: if isSignedIn() && (resource.data.authorId == request.auth.uid || isOwnerAdmin());
+      allow create: if isSignedIn() && isValidId(postId)
+        && incoming().authorId == request.auth.uid
+        && incoming().content is string;
+      allow update: if isSignedIn() && (
+        (existing().authorId == request.auth.uid && incoming().authorId == existing().authorId)
+        || isOwnerAdmin()
+      );
+      allow delete: if isSignedIn() && (existing().authorId == request.auth.uid || isOwnerAdmin());
+    }
+
+    // Media Collection
+    match /media/{mediaId} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isOwnerAdmin());
+      allow create: if isSignedIn() && isValidId(mediaId)
+        && incoming().userId == request.auth.uid;
+      allow update: if isSignedIn() && (
+        (existing().userId == request.auth.uid && incoming().userId == existing().userId)
+        || isOwnerAdmin()
+      );
+      allow delete: if isSignedIn() && (existing().userId == request.auth.uid || isOwnerAdmin());
+    }
+
+    // Channels Collection
+    match /channels/{channelId} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isOwnerAdmin());
+      allow create: if isSignedIn() && isValidId(channelId)
+        && incoming().userId == request.auth.uid;
+      allow update: if isSignedIn() && (
+        (existing().userId == request.auth.uid && incoming().userId == existing().userId)
+        || isOwnerAdmin()
+      );
+      allow delete: if isSignedIn() && (existing().userId == request.auth.uid || isOwnerAdmin());
+    }
+
+    // AI Drafts Collection
+    match /ai_drafts/{draftId} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isOwnerAdmin());
+      allow create: if isSignedIn() && isValidId(draftId)
+        && incoming().userId == request.auth.uid;
+      allow update: if isSignedIn() && (
+        (existing().userId == request.auth.uid && incoming().userId == existing().userId)
+        || isOwnerAdmin()
+      );
+      allow delete: if isSignedIn() && (existing().userId == request.auth.uid || isOwnerAdmin());
+    }
+  }
+}
